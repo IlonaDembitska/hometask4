@@ -1,3 +1,9 @@
+#!/bin/bash
+
+# === Install needed packages ===
+apt update -y
+apt install -y acl openssl
+
 # === Generate secure password hash for adminuser ===
 ADMIN_HASH=$(openssl passwd -6 'Admin123!')
 
@@ -21,4 +27,3 @@ setfacl -m u:poweruser:rx /home/adminuser
 
 # === Create softlink /etc/mtab in poweruser home ===
 ln -s /etc/mtab /home/poweruser/mtab_link
-
